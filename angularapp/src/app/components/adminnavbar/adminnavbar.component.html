@@ -1,0 +1,30 @@
+<nav class="admin-navbar">
+  <div class="site-title">
+    <a routerLink="/" style="text-decoration: none; color: inherit;">
+      Smart Mart
+    </a>
+  </div>
+
+  <!-- Centered Admin Info -->
+  <div class="admin-info">
+    <mat-icon>admin_panel_settings</mat-icon>
+    <span class="admin-name">Admin</span>
+  </div>
+  
+
+  <ul class="nav-links">
+    <li><div class="google-logo" >
+      <a href="https://analytics.google.com/analytics/web/?utm_source=OGB&utm_medium=app&authuser=0#/a324765254p511305927/reports/intelligenthome?params=_u..nav%3Dmaui" target="_blank"><img
+        src="https://developers.google.com/static/analytics/images/terms/lockup_ic_Analytics_horiz_272px_wht.png"
+        alt="Google Logo"></a>
+    </div></li>
+    <li><a routerLink="/admin/products" routerLinkActive="active">Manage Products</a></li>
+    <li><a routerLink="/admin/add-product" routerLinkActive="active">Add Product</a></li>
+    <li><a routerLink="/admin/orders" routerLinkActive="active">Orders</a></li>
+    <li><a routerLink="/admin/users" routerLinkActive="active">Users</a></li>
+    <li><a routerLink="/admin/view-feedback" routerLinkActive="active">Feedback</a></li>
+    <button (click)="triggerLogoutPopup()" style="background-color: rgb(180, 7, 7);">
+      Logout
+    </button>
+  </ul>
+</nav>

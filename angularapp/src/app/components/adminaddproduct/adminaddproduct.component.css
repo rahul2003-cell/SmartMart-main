@@ -1,0 +1,98 @@
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
+  background: url('/assets/loginsmart.png') no-repeat center center scroll;
+  background-size: cover;
+}
+
+.form-container {
+  width: 100%;
+  max-width: 450px;
+  padding: 30px;
+  background-color: rgba(255, 255, 255, 0.09); /* More transparent */
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.form-container h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  font-weight: bold;
+  font-size: 24px;
+  color: #333;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 18px;
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  font-size: 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: rgba(255, 255, 255, 0.9);
+  box-sizing: border-box;
+}
+
+.form-control:focus {
+  border-color: #008080;
+  outline: none;
+  box-shadow: 0 0 6px rgba(225, 232, 232, 0.3);
+}
+
+/* Placeholder styling */
+.form-control::placeholder {
+  color: rgba(0, 0, 0, 0.5); /* Soft gray for readability */
+  font-size: 14px;
+  font-style: italic; /* Adds a subtle elegant look */
+  letter-spacing: 0.5px;
+  transition: color 0.3s ease;
+}
+
+/* On focus, make placeholder lighter */
+.form-control:focus::placeholder {
+  color: rgba(0, 128, 128, 0.4); /* Matches theme color */
+}
+
+textarea.form-control {
+  resize: none;
+  height: 90px;
+}
+
+.text-danger {
+  font-size: 13px;
+  color: #e41710;
+  margin-top: 5px;
+  font-weight: 500;
+}
+
+.btn-primary {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  background-color: #008080;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background-color: #006666;
+}
+
+.btn-primary:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}

@@ -1,0 +1,29 @@
+<div class="page-background"></div>
+
+<div class="container" *ngIf="userProf">
+  <h2>User Profile</h2>
+  <p><span>ID:</span> {{ userProf?.userId }}</p>
+  <p><span>Name:</span> {{ userProf?.username }}</p>
+  <p><span>Email:</span> {{ userProf?.email }}</p>
+  <p><span>Phone:</span> {{ userProf?.mobileNumber }}</p>
+
+  <button (click)="toggleProducts()">
+    {{ showProducts ? 'Hide Ordered Products' : 'View Ordered Products' }}
+  </button>
+
+  <div *ngIf="showProducts">
+    <h3>Ordered Products</h3>
+    <div *ngIf="products.length === 0">No Items Available</div>
+
+    <div class="product-grid">
+      <div class="product-card" *ngFor="let product of products">
+        <img *ngIf="product.photoImage" [src]="product.photoImage" alt="{{ product.name }}">
+        <h5>{{ product.name }}</h5>
+        <p><span class="label">Description:</span> {{ product.description }}</p>
+        <p><span class="label">Price:</span> {{ product.price | currency:'INR' }}</p>
+        <p><span class="label">Stock:</span> {{ product.stock }}</p>
+        <p><span class="label">Category:</span> {{ product.category }}</p>
+      </div>
+    </div>
+  </div>
+</div>

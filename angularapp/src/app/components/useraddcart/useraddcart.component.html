@@ -1,0 +1,74 @@
+<div class="cart-container">
+    <h2>Your Cart</h2>
+  
+    <div *ngIf="cartItems.length === 0" class="empty-cart">
+      <mat-icon color="accent">shopping_cart</mat-icon> Your cart is empty.
+    </div>
+  
+    <div class="cart-layout" *ngIf="cartItems.length > 0">
+      <!-- Left Side: Items -->
+      <div class="cart-items">
+        <div class="cart-item" *ngFor="let item of cartItems">
+          <img [src]="item.photoImage || 'assets/default-image.jpg'" alt="{{ item.name }}" class="cart-image">
+          <div class="item-details">
+            <h3>{{ item.name }}</h3>
+            <p><strong>Category:</strong> {{ item.category }}</p>
+  
+            <!-- Quantity Controls -->
+            <div class="quantity-controls">
+              <button mat-mini-fab color="primary" (click)="decreaseQuantity(item)">
+                <mat-icon>remove</mat-icon>
+              </button>
+              <span class="quantity">{{ item.quantity }}</span>
+              <button mat-mini-fab color="primary" (click)="increaseQuantity(item)" [disabled]="item.quantity >= item.stock">
+                <mat-icon>add</mat-icon>
+              </button>              
+            </div>
+  
+            <!-- Subtotal -->
+            <p class="subtotal"><strong>Subtotal:</strong> ₹{{ item.price * item.quantity }}</p>
+          </div>
+          <button mat-icon-button color="warn" (click)="removeItem(item)" matTooltip="Remove">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </div>
+  
+      <!-- Right Side: Price Summary -->
+      <div class="cart-summary">
+        <h3>Order Summary</h3>
+        <div *ngFor="let item of cartItems" class="summary-row">
+          <span>{{ item.name }} (x{{ item.quantity }})</span>
+          <span>₹{{ item.price * item.quantity }}</span>
+        </div>
+        <hr>
+        <div class="summary-row">
+          <span>Subtotal:</span>
+          <span>₹{{ getBaseTotal() }}</span>
+        </div>
+        <div class="summary-row">
+          <span>GST (18%):</span>
+          <span>₹{{ getGST() }}</span>
+        </div>
+        <div class="summary-row">
+          <span>Delivery (3%):</span>
+          <span>₹{{ getDeliveryCharge() }}</span>
+        </div>
+        <hr>
+        <div class="summary-total">
+          <strong>Total:</strong> ₹{{ getTotal() }}
+        </div>
+  
+        <!-- Address Input -->
+        <mat-form-field appearance="outline" class="address-field">
+          <mat-label>Shipping Address</mat-label>
+          <textarea matInput [(ngModel)]="shippingAddress" placeholder="Enter your address"></textarea>
+        </mat-form-field>
+  
+        <!-- Checkout Button -->
+        <button mat-raised-button color="primary" class="checkout-btn" (click)="placeOrder()">
+          <mat-icon>payment</mat-icon> Checkout
+        </button>
+      </div>
+    </div>
+  </div>

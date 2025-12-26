@@ -1,0 +1,82 @@
+<!-- <div>
+    <select [(ngModel)]="selectedCategory" (change)="filterProducts()">
+        <option *ngFor="let cat of categories">{{ cat }}</option>
+    </select>
+</div>
+
+
+<div *ngIf="products.length === 0" class="no-products">
+    Oops! No Products Found.
+</div>
+
+<div class="grid">
+    <div class="card" *ngFor="let product of filteredProducts">
+        <img [src]="product.photoImage || 'assets/default-image.png'" alt="{{ product.name }}" />
+        <h3>{{ product.name }}</h3>
+        <p>{{ product.description }}</p>
+        <p><strong>Price:</strong> ₹{{ product.price }}</p>
+        <p><strong>Stock:</strong> {{ product.stock }}</p>
+        <p><strong>Category:</strong> {{ product.category }}</p>
+        <p><strong>Created:</strong> {{ product.createdAt | date:'short' }}</p>
+        <p><strong>Updated:</strong> {{ product.updatedAt | date:'short' }}</p>
+        <p *ngIf="product.user"><strong>Added by:</strong> {{ product.user.name }}</p>
+        <button (click)="editProduct(product.productId)">Edit</button>
+        <button (click)="deleteProduct(product.productId)">Delete</button>
+    </div> 
+</div>
+ -->
+
+ <div class="product-container">
+    <h2>Available Products</h2>
+  
+    <div class="filters">
+      <!-- Search Bar -->
+      <mat-form-field appearance="outline" class="filter-item">
+        <mat-label>Search Products</mat-label>
+        <input matInput [(ngModel)]="searchTerm" (input)="applyFilters()" placeholder="Type to search..." />
+      </mat-form-field>
+  
+      <!-- Category Filter -->
+      <mat-form-field appearance="outline" class="filter-item">
+        <mat-label>Filter by Category</mat-label>
+        <mat-select [(value)]="selectedCategory" (selectionChange)="applyFilters()">
+          <mat-option value="">All</mat-option>
+          <mat-option *ngFor="let category of categories" [value]="category">{{ category }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  
+    <!-- Product Grid -->
+    <div class="product-grid">
+      <mat-card class="product-card" *ngFor="let product of filteredProducts">
+        <img mat-card-image [src]="product.photoImage || 'assets/images.png'" alt="{{ product.name }}" />
+  
+        <mat-card-header>
+          <mat-card-title>{{ product.name }}</mat-card-title>
+          <mat-card-subtitle>{{ product.category }}</mat-card-subtitle>
+        </mat-card-header>
+  
+        <mat-card-content>
+          <p class="description">{{ product.description }}</p>
+          <p class="price"><strong>Price:</strong> ₹{{ product.price }}</p>
+          <p><strong style="color: green;">Stock:</strong> {{ product.stock }}</p>
+          <p><strong>Created:</strong> {{ product.createdAt | date:'dd/MM/yyyy, hh:mm a':'Asia/Kolkata' }}</p>
+          <p><strong>Updated:</strong> {{ product.updatedAt | date:'dd/MM/yyyy, hh:mm a':'Asia/Kolkata' }}</p>
+        </mat-card-content>
+  
+        <mat-card-actions>
+          <button mat-raised-button color="primary" (click)="editProduct(product.productId)">
+            <mat-icon>edit</mat-icon> Edit
+          </button>
+          <button mat-raised-button color="warn" (click)="deleteProduct(product.productId)">
+            <mat-icon>delete</mat-icon> Delete
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  
+    <div *ngIf="filteredProducts.length === 0" class="no-products">
+      Oops! No Products Found.
+    </div>
+  </div>
+  

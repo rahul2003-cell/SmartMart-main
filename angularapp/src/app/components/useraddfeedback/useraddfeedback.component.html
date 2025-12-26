@@ -1,0 +1,37 @@
+<div class="user-feedback-background">
+    <div class="user-feedback-glass">
+      <h2>Submit Feedback</h2>
+  
+      <form [formGroup]="feedbackForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="userName">User Name</label>
+          <input id="userName" formControlName="userName" type="text" />
+          <div *ngIf="submitted && feedbackForm.controls.userName.invalid" class="error">
+            Name is required.
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <label for="message">Comment</label>
+          <textarea id="message" formControlName="message"></textarea>
+          <div *ngIf="submitted && feedbackForm.controls.message.invalid" class="error">
+            Comment must be at least 10 characters.
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <label for="rating">Rating (1 to 5)</label>
+          <input id="rating" formControlName="rating" type="number" min="1" max="5" />
+          <div *ngIf="submitted && feedbackForm.controls.rating.invalid" class="error">
+            Rating must be between 1 and 5.
+          </div>
+        </div>
+  
+        <button type="submit" class="submit-btn">Submit</button>
+      </form>
+  
+      <div *ngIf="successMessage" class="success-message">
+        {{ successMessage }}
+      </div>
+    </div>
+  </div>

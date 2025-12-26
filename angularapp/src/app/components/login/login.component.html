@@ -1,0 +1,35 @@
+<div class="login-container">
+    <div class="image-side">
+      <img
+        src="https://img.freepik.com/free-vector/flat-people-order-food-online-grocery-shopping-from-mobile-application-internet-purchases-with-home-delivery-from-supermarket-store-smartphone-screen-with-buy-button-basket-full-products_88138-856.jpg?t=st=1761724112~exp=1761727712~hmac=178561e1cee9e4f4e7ae8125b7bd51ca2345d35f6386d732e6f590651aec5505&w=1480" alt="Smart cart with basket">
+    </div>
+  
+    <div class="form-side">
+      <h1>Login</h1>
+  
+      <form #loginForm="ngForm" (ngSubmit)="login()" novalidate>
+        <div class="form-group">
+          <label for="username">Username:</label>
+          <input type="text" id="username" name="username" [(ngModel)]="username" #usernameInput="ngModel" required>
+          <div *ngIf="usernameInput.invalid && usernameInput.touched" class="error-message">
+            <div *ngIf="usernameInput.errors?.required">Username is required</div>
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" [(ngModel)]="password" required #passwordField="ngModel" />
+          <div class="error-message" *ngIf="passwordField.invalid && passwordField.touched">
+            <div *ngIf="passwordField.errors?.required">Password is required</div>
+          </div>
+        </div>
+  
+        <button type="submit" [disabled]="loginForm.invalid">Login</button>
+        <div class="register-link">
+          <a routerLink="/register">Don't have an account? Register here</a>
+        </div>
+      </form>
+    </div>
+  </div>
+  
+  

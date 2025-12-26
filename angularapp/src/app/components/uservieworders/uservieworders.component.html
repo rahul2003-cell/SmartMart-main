@@ -1,0 +1,65 @@
+  <div class="container">
+    <h2 class="page-title">My Orders</h2>
+  
+    <ng-container *ngIf="orders.length > 0; else noOrders">
+      <mat-card class="order-card" *ngFor="let order of orders">
+        <mat-card-header>
+    
+          <mat-card-title>Order #{{ order.orderId }}</mat-card-title>
+          <mat-card-subtitle>Placed on {{ order.orderDate | date:'mediumDate' }}</mat-card-subtitle>
+        </mat-card-header>
+  
+        <mat-card-content>
+          <!-- Flex container for side-by-side layout -->
+          <div class="order-product-wrapper">
+            <!-- Left: Order Details -->
+            <div class="order-details">
+              <h4>Order Details</h4>
+              <p><strong>Shipping Address:</strong> {{ order.shippingAddress }}</p>
+              <p><strong>Total Amount:</strong> ₹{{ order.totalAmount }}</p>
+              <p><strong>Quantity:</strong> {{ order.quantity }}</p>
+            </div>
+  
+            <!-- Right: Product Details -->
+            <!-- <div class="product-list"> -->
+              <div class="product-item" *ngFor="let p of order.product">
+                <img [src]="p.photoImage" alt="{{ p.name }}" />
+                <div class="product-info">
+                  <h3>{{ p.name }}</h3>
+                  <p>Category: {{ p.category }}</p>
+                  <p class="price">₹{{ p.price }}</p>
+                </div>
+              </div>
+            </div>
+          <!-- </div> -->
+  
+        </mat-card-content>
+
+        <div class="status-section">
+          <p><strong>Status:</strong> {{ order.status }}</p>          
+          <div class="steps-container">
+            <div 
+              *ngFor="let step of steps; let i = index" 
+              class="step" 
+              [class.active]="i <= steps.indexOf(order.status)">
+              {{ step }}
+
+            </div>
+          </div>
+        </div>
+  
+      </mat-card>
+    </ng-container>
+  
+    <ng-template #noOrders>
+      <p class="text-center text-muted">Oops! No Orders found.</p>
+    </ng-template>
+  </div>
+
+
+  <!-- <mat-progress-bar
+  mode="determinate" 
+  [value]="getProgressValue(order.status)" 
+  [color]="getProgressColor(order.status)"
+  class="big-progress-bar">
+</mat-progress-bar> -->

@@ -1,0 +1,82 @@
+
+nav {
+  background: linear-gradient(90deg, #1a237e, #283593, #3949ab);
+    color: white;
+    padding: 1em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .site-title a {
+    font-size: 1.5em;
+    font-weight: bold;
+  }
+  
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1em;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+  }
+  
+  .nav-links a,
+  .dropdown-toggle,
+  button {
+    color: white;
+    text-decoration: none;
+    padding: 0.5em 1em;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    cursor: pointer;
+  }
+  
+  .nav-links a:hover,
+  .dropdown-toggle:hover,
+  button:hover {
+    background-color: #555;
+  }
+
+  
+  .admin-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1; /* Takes available space to center */
+    font-size: 1.2rem;
+    color: white;
+  }
+  
+  .admin-info mat-icon {
+    margin-right: 8px;
+    font-size: 24px;
+  }
+  .google-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* space between logo, icon, and name */
+  }
+  
+  .google-logo img {
+    height: 30px;
+    cursor: pointer;
+  }
+  
+/*   
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+  }
+  
+  .nav-links li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+  }
+  
+  .nav-links li a.active {
+    color: #007bff;
+  } */

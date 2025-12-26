@@ -1,0 +1,154 @@
+
+nav {
+     background: linear-gradient(90deg, #1a237e, #283593, #3949ab);
+    color: white;
+    padding: 1em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .site-title a {
+    font-size: 1.5em;
+    font-weight: bold;
+  }
+  
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1em;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+  }
+  
+  .nav-links a,
+  .dropdown-toggle,
+  button {
+    color: white;
+    text-decoration: none;
+    padding: 0.5em 1em;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    cursor: pointer;
+  }
+  
+  .nav-links a:hover,
+  .dropdown-toggle:hover,
+  button:hover {
+    background-color: #555;
+  }
+
+  
+  .admin-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1; /* Takes available space to center */
+    font-size: 1.2rem;
+    color: white;
+  }
+  
+  .admin-info mat-icon {
+    margin-right: 8px;
+    font-size: 24px;
+  }
+  
+  .cart-link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .cart-badge {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    background-color: #ff5722;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 12px;
+    font-weight: bold;
+  }
+  /* Dropdown container */
+.feedback-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #fff;
+  color: #333;
+  min-width: 160px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: none;
+  flex-direction: column;
+  z-index: 1000;
+  border-radius: 4px;
+}
+
+/* Dropdown links */
+.feedback-dropdown a {
+  padding: 10px 15px;
+  text-decoration: none;
+  color: #333;
+  display: block;
+  font-size: 14px;
+}
+
+.feedback-dropdown a:hover {
+  background-color: #f1f1f1;
+}
+
+/* Show dropdown on hover */
+.nav-links li:hover .feedback-dropdown {
+  display: flex;
+}
+
+/* Parent link styling */
+.nav-links li > a {
+  cursor: pointer;
+  position: relative;
+}
+
+/* Style the mat-menu panel */
+.mat-menu-panel {
+  background-color: #ffffff; /* White background */
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  padding: 4px 0;
+}
+
+/* Style individual menu items */
+.mat-menu-item {
+  font-size: 14px;
+  color: #333;
+  padding: 10px 20px;
+  transition: background-color 0.2s ease;
+}
+
+/* Hover effect */
+.mat-menu-item:hover {
+  background-color: #f5f5f5;
+}
+
+/* Optional: Add icon spacing if you use icons */
+.mat-menu-item mat-icon {
+  margin-right: 8px;
+  color: #1976d2; /* Material Blue */
+}
+
+/* Trigger button styling */
+.feedback-trigger {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.feedback-trigger mat-icon {
+  font-size: 20px;
+}

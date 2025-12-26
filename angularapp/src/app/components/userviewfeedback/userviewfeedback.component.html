@@ -1,0 +1,75 @@
+
+  <mat-card class="user-feedback-wrapper">
+    <h2 class="title">Your Submitted Feedback</h2>
+  
+    <div *ngIf="userFeedbackList.length === 0" class="no-feedback">
+      <mat-icon color="accent">info</mat-icon> No feedback submitted yet.
+    </div>
+  
+    <table mat-table [dataSource]="userFeedbackList" class="mat-elevation-z8 feedback-table" *ngIf="userFeedbackList.length > 0">
+  
+      <!-- Index Column -->
+      <ng-container matColumnDef="index">
+        <th mat-header-cell *matHeaderCellDef>S.No</th>
+        <td mat-cell *matCellDef="let feedback; let i = index">{{ i + 1 }}</td>
+      </ng-container>
+  
+      <!-- Comment Column -->
+      <ng-container matColumnDef="message">
+        <th mat-header-cell *matHeaderCellDef>Comment</th>
+        <td mat-cell *matCellDef="let feedback">{{ feedback.message }}</td>
+      </ng-container>
+  
+      <!-- Rating Column -->
+      <ng-container matColumnDef="rating">
+        <th mat-header-cell *matHeaderCellDef>Rating</th>
+        <td mat-cell *matCellDef="let feedback">
+          <mat-chip color="primary" selected>{{ feedback.rating }}</mat-chip>
+        </td>
+      </ng-container>
+  
+      <!-- Actions Column -->
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>Actions</th>
+        <td mat-cell *matCellDef="let feedback">
+          <button mat-icon-button color="warn" (click)="deleteFeedback(feedback.feedbackId)" matTooltip="Delete Feedback">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="hover-row"></tr>
+    </table>
+  </mat-card>
+
+
+  <!-- <div class="user-feedback-wrapper">
+    <h2>Your Submitted Feedback</h2>
+  
+    <div *ngIf="userFeedbackList.length === 0" class="no-feedback">
+      No feedback submitted yet.
+    </div>
+  
+    <table *ngIf="userFeedbackList.length > 0" class="user-feedback-table">
+      <thead>
+        <tr>
+          <th>S.No</th>
+          <th>Comment</th>
+          <th>Rating</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let feedback of userFeedbackList; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ feedback.message }}</td>
+          <td>{{ feedback.rating }}</td>
+          <td><button (click)="deleteFeedback(feedback.feedbackId)">Delete</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div> -->
+
+  
+
